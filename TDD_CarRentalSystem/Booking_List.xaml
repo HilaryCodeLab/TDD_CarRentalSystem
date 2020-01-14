@@ -1,0 +1,205 @@
+﻿<Controls:MetroWindow x:Class="TDD_CarRentalSystem.Booking_List"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:TDD_CarRentalSystem"
+        mc:Ignorable="d"
+        Title="Booking_List" Height="450" Width="800" KeyUp="MetroWindow_KeyUp">
+    <Grid>
+        <DockPanel>
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBar.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="35" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="35" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="35" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </StatusBar.ItemsPanel>
+
+                <StatusBarItem>
+                    <TextBlock Name="txtRecordNumber"  
+                           Text="Record 4 of 45"/>
+                </StatusBarItem>
+
+                <Separator Grid.Column="1"/>
+
+                <StatusBarItem Grid.Column="2">
+                    <TextBlock Name="txtCursorPositionLabel"/>
+                </StatusBarItem>
+
+                <Separator Grid.Column="3"/>
+
+                <StatusBarItem Grid.Column="4">
+                    <TextBlock Name="txtFileNameLabel" 
+                           Text="c:\path\of\current\file.txt"/>
+                </StatusBarItem>
+
+                <Separator Grid.Column="5"/>
+                <StatusBarItem Grid.Column="6">
+                    <TextBlock Name="txtCapsLock"/>
+                </StatusBarItem>
+                <Separator Grid.Column="7"/>
+                <StatusBarItem Grid.Column="8">
+                    <TextBlock Name="txtNumLock" Text="NUM"/>
+                </StatusBarItem>
+                <Separator Grid.Column="9" />
+                <StatusBarItem Grid.Column="10">
+                    <TextBlock Name="txtScrolLock"/>
+                </StatusBarItem>
+                <Separator Grid.Column="11"/>
+
+                <StatusBarItem Grid.Column="12">
+                    <ProgressBar Name="SaveProgressBar" 
+                             Value="50" 
+                             Width="90" 
+                             Height="16"/>
+                </StatusBarItem>
+            </StatusBar>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="btnNewBooking" Content="Add New Booking"  
+                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                        Margin="10.4,8.4,0,0" Width="124" Height="25"
+                        Grid.Column="1" Grid.Row="1" Click="BtnNew_Click"/>
+
+                <TextBox x:Name="txtSearch" TextWrapping="Wrap" 
+                     HorizontalAlignment="Left" VerticalAlignment="Top" 
+                     Height="25" Width="216" Margin="493.4,8.4,0,0"
+                     Grid.Row="1" Grid.Column="1" KeyUp="TxtSearch_KeyUp"/>
+
+                <Button x:Name="btnClearSearch" Content="Clear" 
+                    HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    Margin="714.4,8.4,0,0" Width="50" Height="25"                
+                    Grid.Row="1" Grid.Column="1" Click="BtnClearSearch_Click"/>
+
+                <ListView x:Name="lvBookingList" 
+                  Grid.Column="1" 
+                  HorizontalAlignment="Left" 
+                  Height="252" 
+                  Margin="10.4,38.4,0,0" 
+                  Grid.Row="1" 
+                  VerticalAlignment="Top" 
+                  Width="730" Grid.RowSpan="3"
+                  SelectionChanged="lvBookingList_SelectionChanged"
+                  MouseDoubleClick="lvBookingList_MouseDoubleClick">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn                                                     
+                            Width="120" 
+                            DisplayMemberBinding="{Binding BookingStart}">
+                                <GridViewColumnHeader Tag="BookingStart" Click="GridViewColumnHeader_Click">Booking Start</GridViewColumnHeader>
+                            </GridViewColumn>
+
+                            <GridViewColumn                           
+                            Width="100"
+                            DisplayMemberBinding="{Binding BookingEnd}">
+                                <GridViewColumnHeader Tag="BookingEnd" Click="GridViewColumnHeader_Click">Booking End</GridViewColumnHeader>
+                            </GridViewColumn>
+
+
+                            <GridViewColumn 
+                            Width="120" 
+                            DisplayMemberBinding="{Binding OdoReading}">
+                                <GridViewColumnHeader Tag="OdoReading" Click="GridViewColumnHeader_Click">Odo Reading</GridViewColumnHeader>
+                            </GridViewColumn>
+
+
+                            <GridViewColumn 
+                            Width="100" 
+                            DisplayMemberBinding="{Binding BookingType}">
+                                <GridViewColumnHeader Tag="BookingType" Click="GridViewColumnHeader_Click">Booking Type</GridViewColumnHeader>
+                            </GridViewColumn>
+
+
+                            <GridViewColumn 
+                            Width="100" 
+                            DisplayMemberBinding="{Binding CreatedAt}">
+                                <GridViewColumnHeader Tag="CreatedAt" Click="GridViewColumnHeader_Click">Created At</GridViewColumnHeader>
+                            </GridViewColumn>
+
+                            <GridViewColumn 
+                            Width="100" 
+                            DisplayMemberBinding="{Binding UpdatedAt}">
+                                <GridViewColumnHeader Tag="UpdatedAt" Click="GridViewColumnHeader_Click">Updated At</GridViewColumnHeader>
+                            </GridViewColumn>
+
+
+                            <GridViewColumn 
+                            Header="Actions"
+                            Width="90">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="4"></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Button Click="EditButton_Click"
+                                                Grid.Column="0"
+                                                Height="24" Width="24"                                             
+                                                Background="Purple">
+
+
+                                                <iconPacks:PackIconEntypo Kind="Edit" 
+                                                                      VerticalAlignment="Center"
+                                                                      HorizontalAlignment="Center"  
+                                                                      Width="16" Height="16" 
+                                                                      Foreground="Beige"  />
+                                            </Button>
+                                            <Button Click="DeleteBtn_Click"
+                                                Grid.Column="2"
+                                                Height="24" Width="24"                                             
+                                                Background="DeepPink">
+
+
+                                                <iconPacks:PackIconEntypo Kind="Erase" 
+                                                                      VerticalAlignment="Center" 
+                                                                      HorizontalAlignment="Center"  
+                                                                      Width="16" Height="16" 
+                                                                      Foreground="Beige"  />
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Controls:MetroWindow>

@@ -1,0 +1,202 @@
+﻿<Controls:MetroWindow x:Class="TDD_CarRentalSystem.CarList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:TDD_CarRentalSystem"
+        mc:Ignorable="d"
+        Title="CarList" Height="450" Width="800">
+    <DockPanel d:IsLocked="True">
+        <StatusBar DockPanel.Dock="Bottom" d:IsLocked="True">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="35" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="35" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="35" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+
+            <StatusBarItem d:IsLocked="True">
+                <TextBlock Name="txtRecordNumber"  
+                           Text="Record 4 of 45" d:IsLocked="True" />
+            </StatusBarItem>
+
+            <Separator Grid.Column="1" d:IsLocked="True" />
+
+            <StatusBarItem Grid.Column="2" d:IsLocked="True">
+                <TextBlock Name="txtCursorPositionLabel" d:IsLocked="True" />
+            </StatusBarItem>
+
+            <Separator Grid.Column="3" d:IsLocked="True" />
+
+            <StatusBarItem Grid.Column="4" d:IsLocked="True">
+                <TextBlock Name="txtFileNameLabel" 
+                           Text="c:\path\of\current\file.txt" d:IsLocked="True" />
+            </StatusBarItem>
+
+            <Separator Grid.Column="5" d:IsLocked="True" />
+            <StatusBarItem Grid.Column="6" d:IsLocked="True">
+                <TextBlock Name="txtCapsLock" d:IsLocked="True"/>
+            </StatusBarItem>
+            <Separator Grid.Column="7" d:IsLocked="True" />
+            <StatusBarItem Grid.Column="8" d:IsLocked="True">
+                <TextBlock Name="txtNumLock" Text="NUM" d:IsLocked="True" />
+            </StatusBarItem>
+            <Separator Grid.Column="9" d:IsLocked="True" />
+            <StatusBarItem Grid.Column="10" d:IsLocked="True">
+                <TextBlock Name="txtScrolLock" d:IsLocked="True"/>
+            </StatusBarItem>
+            <Separator Grid.Column="11" d:IsLocked="True" />
+
+            <StatusBarItem Grid.Column="12" d:IsLocked="True">
+                <ProgressBar Name="SaveProgressBar" 
+                             Value="50" 
+                             Width="90" 
+                             Height="16" d:IsLocked="True" />
+            </StatusBarItem>
+        </StatusBar>
+        <Grid d:IsLocked="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="btnNew" Content="Add New Vehicle"  
+                HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Margin="10.4,8.4,0,0" Width="124" Height="25"
+                Grid.Column="1" Grid.Row="1" Click="BtnNew_Click" d:IsLocked="True" />
+            <TextBox x:Name="txtSearch" TextWrapping="Wrap" 
+                 HorizontalAlignment="Left" VerticalAlignment="Top" 
+                 Height="25" Width="216" Margin="493.4,8.4,0,0"
+                 Grid.Row="1" Grid.Column="1" KeyUp="TxtSearch_KeyUp" d:IsLocked="True" 
+                 />
+            <Button x:Name="btnClearSearch" Content="Clear" 
+                HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Margin="714.4,8.4,0,0" Width="50" Height="25"                
+                Grid.Row="1" Grid.Column="1" Click="BtnClearSearch_Click" d:IsLocked="True" />
+
+            <ListView x:Name="lvVehicleList" 
+                  Grid.Column="1" 
+                  HorizontalAlignment="Left" 
+                  Height="252" 
+                  Margin="10.4,38.4,0,0" 
+                  Grid.Row="1" 
+                  VerticalAlignment="Top" 
+                  Width="730" Grid.RowSpan="3"
+                  SelectionChanged="lvVehicleList_SelectionChanged"
+                  MouseDoubleClick="lvVehicleList_MouseDoubleClick" d:IsLocked="True">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn                                                     
+                            Width="120" 
+                            DisplayMemberBinding="{Binding RegistrationNumber}">
+                            <GridViewColumnHeader Tag="RegistrationNumber" Click="GridViewColumnHeader_Click" d:IsLocked="True" >Rego</GridViewColumnHeader>
+                        </GridViewColumn>
+
+                        <GridViewColumn                           
+                            Width="100"
+                            DisplayMemberBinding="{Binding Manufacturer}">
+                            <GridViewColumnHeader Tag="Make" Click="GridViewColumnHeader_Click" d:IsLocked="True" >Make</GridViewColumnHeader>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn 
+                            Width="120" 
+                            DisplayMemberBinding="{Binding Model}">
+                            <GridViewColumnHeader Tag="Model" Click="GridViewColumnHeader_Click" d:IsLocked="True" >Model</GridViewColumnHeader>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn 
+                            Width="100" 
+                            DisplayMemberBinding="{Binding MakeYear}">
+                            <GridViewColumnHeader Tag="Year" Click="GridViewColumnHeader_Click" d:IsLocked="True" >Year</GridViewColumnHeader>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn 
+                            Width="100" 
+                            DisplayMemberBinding="{Binding FuelChoices}">
+                            <GridViewColumnHeader Tag="FuelType" Click="GridViewColumnHeader_Click" d:IsLocked="True" >Fuel Type</GridViewColumnHeader>
+                        </GridViewColumn>
+
+                        <GridViewColumn 
+                            Width="100" 
+                            DisplayMemberBinding="{Binding TankCapacity}">
+                            <GridViewColumnHeader Tag="TankSize" Click="GridViewColumnHeader_Click" d:IsLocked="True">Tank Size</GridViewColumnHeader>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn 
+                            Header="Actions"
+                            Width="90">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="4"></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Button Click="EditCompanyButton_Click"
+                                                Grid.Column="0"
+                                                Height="24" Width="24"                                             
+                                                Background="Fuchsia">
+
+
+                                            <iconPacks:PackIconEntypo Kind="Edit" 
+                                                                      VerticalAlignment="Center"
+                                                                      HorizontalAlignment="Center"  
+                                                                      Width="16" Height="16" 
+                                                                      Foreground="Beige"  />
+                                        </Button>
+                                        <Button Click="DeleteVehicleBtn_Click"
+                                                Grid.Column="2"
+                                                Height="24" Width="24"                                             
+                                                Background="Turquoise">
+
+
+                                            <iconPacks:PackIconEntypo Kind="Erase" 
+                                                                      VerticalAlignment="Center" 
+                                                                      HorizontalAlignment="Center"  
+                                                                      Width="16" Height="16" 
+                                                                      Foreground="Beige"  />
+                                        </Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </DockPanel>
+</Controls:MetroWindow>

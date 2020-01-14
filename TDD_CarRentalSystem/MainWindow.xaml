@@ -1,0 +1,70 @@
+﻿<Controls:MetroWindow x:Class="TDD_CarRentalSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TDD_CarRentalSystem"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d" Closing="MetroWindow_Closing"
+        Title="MainWindow" Height="450" Width="800"  MouseMove="MetroWindow_MouseMove">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="settings" />
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconEntypo Width="24" Height="24" Kind="Database" />
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="Fast n Easy Car Rental" />
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" />
+                <MenuItem Header="_Open" />
+                <MenuItem Header="_Save" />
+                <Separator />
+                <MenuItem Header="Exit"  Click="Quit_Click"  />
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Cut" />
+                <MenuItem Header="_Copy" />
+                <MenuItem Header="_Paste" />
+            </MenuItem>
+            <MenuItem Header="_Vehicles">
+                <MenuItem Header="_Add Vehicle" Click="btn_Add_Click" />
+                <MenuItem Header="_Vehicle List" Click="btn_toVehicleList_Click" />
+            </MenuItem>
+            <MenuItem x:Name="Services" Header="Services"/>
+
+            <MenuItem Header="Rental"/>
+        </Menu>
+
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="100"/>
+                <!--<RowDefinition Height="1*"/>-->
+            </Grid.RowDefinitions>
+            <local:InformationCard x:Name="VehiclesInformationCard"
+                                   Grid.Row="0" Grid.Column="0" 
+                                   MouseDoubleClick="VehiclesInformationCard_MouseDoubleClick">
+            </local:InformationCard>
+            <local:InformationCard x:Name="BookingInformationCard"
+                                   Grid.Row="0" Grid.Column="1" 
+                                   MouseDoubleClick="BookingInformationCard_MouseDoubleClick">
+            </local:InformationCard>
+        </Grid>
+    </DockPanel>
+</Controls:MetroWindow>

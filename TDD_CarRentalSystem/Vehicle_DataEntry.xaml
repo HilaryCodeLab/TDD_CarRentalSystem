@@ -1,0 +1,84 @@
+﻿<Controls:MetroWindow x:Class="TDD_CarRentalSystem.Vehicle_DataEntry"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TDD_CarRentalSystem"
+        mc:Ignorable="d"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        Title="Vehicle_DataEntry" Height="450" Width="800">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="settings" />
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconEntypo Width="24" Height="24" Kind="AwarenessRibbon" />
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="Fast n Easy Car Rental" />
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <!--new code-->
+    <Window.DataContext>
+        <local:Vehicle/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="1">Registration:</Label>
+        <Label Grid.Row="2">Model:</Label>
+        <Label Grid.Row="3">Make:</Label>
+        <Label Grid.Row="4">Make Year:</Label>
+        <Label Grid.Row="5">Fuel Type:</Label>
+        <Label Grid.Row="6">Tank Capacity:</Label>
+
+        <TextBox x:Name="tbx_rego" Grid.Row="1" Grid.Column="1" Width="150" Height="23" Margin="24,9,26,5"
+                 Text="{Binding RegistrationNumber, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                 ToolTip="{Binding ErrorCollection[RegistrationNumber]}"/>
+        <TextBox x:Name="tbx_model" Grid.Row="2" Grid.Column="1"  Width="150" Height="23" Margin="24,10,26,7"
+                 Text="{Binding Model, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                 ToolTip="{Binding ErrorCollection[Model]}"/>
+        <!--<TextBox x:Name="tbx_make" Grid.Row="3" Grid.Column="1"  Width="150" Height="23" Margin="24,10,26,5"/>-->
+        <TextBox x:Name="tbx_make" Grid.Row="3" Grid.Column="1"  Width="150" Height="23" Margin="24,10,26,5"
+                 Text="{Binding Manufacturer, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                 ToolTip="{Binding ErrorCollection[Manufacturer]}"/>
+        <TextBox x:Name="tbx_year" Grid.Row="4" Grid.Column="1" Width="150" Height="23" Margin="24,10,26,5"
+                 Text="{Binding MakeYear, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                 ToolTip="{Binding ErrorCollection[MakeYear]}"/>
+        <!--<TextBox x:Name="tbx_fuel" Grid.Row="5" Grid.Column="1" Width="150" Height="23" Margin="24,2,26,2"/>-->
+        <ComboBox x:Name="cbx_fuelType" Grid.Column="1" HorizontalAlignment="Left" Margin="24,5,0,0" Grid.Row="5" VerticalAlignment="Top" Width="150" Height="23"
+                    Text="{Binding FuelChoices, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                 ToolTip="{Binding ErrorCollection[FuelChoices]}"/>
+        <TextBox x:Name="tbx_tank" Grid.Row="6" Grid.Column="1" Width="150" Height="23" Margin="24,9,26,5" Text="{Binding TankCapacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                 ToolTip="{Binding ErrorCollection[TankCapacity]}"/>
+        <Button x:Name="btn_Add" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Top" Width="76" Click="AddBtn_Click" Margin="67,29,0,-28">
+            <iconPacks:PackIconEntypo Width="24" Height="24" Kind="AddToList" />
+
+        </Button>
+        <Button x:Name="btn_Cancel" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Top" Width="76" Click="btn_Cancel_Click" Margin="174,29,0,-27">
+            <iconPacks:PackIconEntypo Width="24" Height="24" Kind="Home"/>
+        </Button>
+
+
+
+
+    </Grid>
+</Controls:MetroWindow>

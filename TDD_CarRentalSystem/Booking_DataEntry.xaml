@@ -1,0 +1,100 @@
+﻿<Controls:MetroWindow x:Class="TDD_CarRentalSystem.Booking_DataEntry"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:TDD_CarRentalSystem"
+        mc:Ignorable="d"
+        Title="Booking_DataEntry" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="lblCode"  Content="Id" 
+               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" 
+               Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="txtCode" Text="" 
+                 TextWrapping="Wrap" MaxLength="64"
+                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,42,0,0"  
+                 Width="350" Height="23"
+                 Grid.Row="1" Grid.Column="1"/>
+
+        <Label x:Name="lblVehicleId"  Content="Vehicle Id" 
+               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" 
+               Grid.Row="2" Grid.Column="1"/>
+        <TextBox x:Name="txtVehicleId" Text="" 
+                 TextWrapping="Wrap" MaxLength="64"
+                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,42,0,0"  
+                 Width="350" Height="23"
+                 Grid.Row="2" Grid.Column="1"/>
+
+        <Label x:Name="lblBookingType"  Content="Booking Type" 
+               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" 
+               Grid.Row="3" Grid.Column="1"/>
+        <ComboBox x:Name="cmCountry"                   
+                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,42,0,0"  
+                  Width="150" Height="23"
+                  Grid.Column="1" Grid.Row="3"/>
+
+
+        <Label x:Name="lblBookingStart"  Content="Start Date" 
+               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" 
+               Grid.Row="1" Grid.Column="2"/>
+        <DatePicker x:Name="txtBookingStart" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,42,0,0"  
+                 Width="350" Height="23"
+                 Grid.Row="1" Grid.Column="2" />
+        <!--<TextBox x:Name="txtBookingStart" Text="" 
+                 TextWrapping="Wrap" MaxLength="64"
+                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,42,0,0"  
+                 Width="350" Height="23"
+                 Grid.Row="1" Grid.Column="2"/>-->
+
+        <Label x:Name="lblBookingEnd"  Content="End Date" 
+               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" 
+               Grid.Row="2" Grid.Column="2"/>
+        <DatePicker x:Name="txtBookingEnd" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,42,0,0"  
+                 Width="350" Height="23"
+                 Grid.Row="2" Grid.Column="2" />
+        <!--<TextBox x:Name="txtBookingEnd" Text="" 
+                 TextWrapping="Wrap" MaxLength="64"
+                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,42,0,0"  
+                 Width="350" Height="23"
+                 Grid.Row="2" Grid.Column="2"/>-->
+
+
+        <Label x:Name="lblStartOdo"  Content="Initial Odometer Reading" 
+               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" 
+               Grid.Row="3" Grid.Column="2"/>
+
+        <TextBox x:Name="txtStartOdo" Text="" 
+                 TextWrapping="Wrap" MaxLength="64" 
+                 VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,42,0,0"  
+                 Width="350" Height="23"
+                 Grid.Row="3" Grid.Column="2"/>
+
+        <Button x:Name="btnSave" Content="Save" 
+                Grid.Column="2" Grid.Row="4"
+                HorizontalAlignment="Left" Margin="221,10,0,10"   
+                Width="75" Click="BtnSave_Click"/>
+
+        <Button x:Name="btnCancel" Content="Cancel"                 
+                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="301,10,0,0"                                 
+                Width="75" Height="25"
+                Grid.Row="4" Grid.Column="2" Click="BtnCancel_Click" />
+
+    </Grid>
+</Controls:MetroWindow>
