@@ -20,7 +20,6 @@ namespace TDD_CarRentalSystem
             InitializeComponent();
 
             AddFuelTypes();
-            //cbx_fuelType.ItemsSource = Vehicle.GetFuelType();
 
         }
 
@@ -126,6 +125,7 @@ namespace TDD_CarRentalSystem
                                                         ));
 
             }
+            //update vehicle
             else if (!isNewCar && isEmpty == false)
             {
 

@@ -20,19 +20,27 @@ namespace TDD_CarRentalSystem
     /// </summary>
     public partial class Booking_List : MetroWindow
     {
+        public static List<Booking> bookingList = new List<Booking>();
+
         public Booking_List()
         {
             InitializeComponent();
+            bookingList = MainWindow.bookingList;
+            UpdateList();
         }
 
-        internal void ShowDialog()
+        private void UpdateList (int index = 0)
         {
-            throw new NotImplementedException();
+            lvBookingList.ItemsSource = bookingList;
+            lvBookingList.Items.Refresh();
+            txtRecordNumber.Text = string.Format("Record {0} of {1}", index + 1, bookingList.Count);
         }
 
         private void BtnNew_Click(object sender, RoutedEventArgs e)
         {
-
+            Booking_DataEntry newWin = new Booking_DataEntry();
+            newWin.ShowDialog();
+            UpdateList();
         }
 
         private void MetroWindow_KeyUp(object sender, KeyEventArgs e)

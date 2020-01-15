@@ -10,7 +10,9 @@ namespace TDD_CarRentalSystem
     public partial class MainWindow : MetroWindow
     {
         public static List<Vehicle> vehicleList;
+        public static List<Booking> bookingList;
         public SeriesCollection lineData;
+       
 
 
         public MainWindow()
@@ -23,9 +25,10 @@ namespace TDD_CarRentalSystem
             VehiclesInformationCard.BackgroundColour = "Purple";
             VehiclesInformationCard.ValueProperty = vehicleList.Count.ToString();
 
+            bookingList = Booking.LoadBooking();
             BookingInformationCard.Title = "Booking";
             BookingInformationCard.BackgroundColour = "Green";
-            //BookingInformationCard.ValueProperty = vehicleList.Count.ToString();
+            BookingInformationCard.ValueProperty = bookingList.Count.ToString();
 
             lineData = new SeriesCollection
             {
@@ -41,7 +44,6 @@ namespace TDD_CarRentalSystem
             VehiclesInformationCard.SeriesData = lineData;
 
         }
-
 
 
         private void btn_toVehicleList_Click(object sender, RoutedEventArgs e)

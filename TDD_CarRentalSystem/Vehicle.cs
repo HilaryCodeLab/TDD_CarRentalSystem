@@ -209,31 +209,6 @@ namespace TDD_CarRentalSystem
         }
 
 
-
-        // TODO Add missing getter and setter methods
-
-        /**
-         * Prints details for {@link Vehicle}
-         */
-        //public void PrintDetails()
-        //{
-        //    Console.WriteLine("Vehicle: " + makeYear + " " + manufacturer + " " + model +
-        //        "/n" + "Registration No.: " + registrationNumber + "/n" +
-        //        "Total Kilometres Travelled: " + vehicleRent.TotalKm + "/n" +
-        //        //"Total services: " + vehicleService.ServiceCount + "/n" +
-        //        "Revenue recorded: " + vehicleRent.RentalPerKm + "/n" +
-        //        //"Kilometres since the last service: " + vehicleService.LastServiceOdometerKm + "/n" + 
-        //        "Fuel Economy: " + vehicleFuelPurchase.FuelEconomy + "/n") ;
-        //        //"Requires a service: " + vehicleService.RequiredService );
-
-        //    // TODO Display additional information about this vehicle -Done!
-        //}
-
-
-        // TODO Create an addKilometers method which takes a parameter for distance travelled 
-        // and adds it to the odometer reading. 
-
-
         public static void SaveVehicles(List<Vehicle> vehicleList) //convert JSon to string and write string to a file
         {
             using (StreamWriter file = File.CreateText(GetFilePath()))

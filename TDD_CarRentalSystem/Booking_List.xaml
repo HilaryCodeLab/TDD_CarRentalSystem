@@ -115,21 +115,27 @@
                         <GridView>
                             <GridViewColumn                                                     
                             Width="120" 
-                            DisplayMemberBinding="{Binding BookingStart}">
-                                <GridViewColumnHeader Tag="BookingStart" Click="GridViewColumnHeader_Click">Booking Start</GridViewColumnHeader>
+                            DisplayMemberBinding="{Binding Id}">
+                                <GridViewColumnHeader Tag="Id" Click="GridViewColumnHeader_Click">Id</GridViewColumnHeader>
+                            </GridViewColumn>
+
+                            <GridViewColumn                                                     
+                            Width="120" 
+                            DisplayMemberBinding="{Binding StartDate}">
+                                <GridViewColumnHeader Tag="StartDate" Click="GridViewColumnHeader_Click">Booking Start</GridViewColumnHeader>
                             </GridViewColumn>
 
                             <GridViewColumn                           
                             Width="100"
-                            DisplayMemberBinding="{Binding BookingEnd}">
-                                <GridViewColumnHeader Tag="BookingEnd" Click="GridViewColumnHeader_Click">Booking End</GridViewColumnHeader>
+                            DisplayMemberBinding="{Binding EndDate}">
+                                <GridViewColumnHeader Tag="EndDate" Click="GridViewColumnHeader_Click">Booking End</GridViewColumnHeader>
                             </GridViewColumn>
 
 
                             <GridViewColumn 
                             Width="120" 
-                            DisplayMemberBinding="{Binding OdoReading}">
-                                <GridViewColumnHeader Tag="OdoReading" Click="GridViewColumnHeader_Click">Odo Reading</GridViewColumnHeader>
+                            DisplayMemberBinding="{Binding StartOdo}">
+                                <GridViewColumnHeader Tag="StartOdo" Click="GridViewColumnHeader_Click">Odo Reading</GridViewColumnHeader>
                             </GridViewColumn>
 
 
@@ -140,17 +146,17 @@
                             </GridViewColumn>
 
 
-                            <GridViewColumn 
+                            <!--<GridViewColumn 
                             Width="100" 
                             DisplayMemberBinding="{Binding CreatedAt}">
                                 <GridViewColumnHeader Tag="CreatedAt" Click="GridViewColumnHeader_Click">Created At</GridViewColumnHeader>
-                            </GridViewColumn>
+                            </GridViewColumn>-->
 
-                            <GridViewColumn 
+                            <!--<GridViewColumn 
                             Width="100" 
                             DisplayMemberBinding="{Binding UpdatedAt}">
                                 <GridViewColumnHeader Tag="UpdatedAt" Click="GridViewColumnHeader_Click">Updated At</GridViewColumnHeader>
-                            </GridViewColumn>
+                            </GridViewColumn>-->
 
 
                             <GridViewColumn 

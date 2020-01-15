@@ -52,29 +52,30 @@
 
         <TextBox x:Name="tbx_rego" Grid.Row="1" Grid.Column="1" Width="150" Height="23" Margin="24,9,26,5"
                  Text="{Binding RegistrationNumber, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 ToolTip="{Binding ErrorCollection[RegistrationNumber]}"/>
+                 ToolTip="{Binding ErrorCollection[RegistrationNumber]}"
+                 Background="AliceBlue" BorderBrush="Black"/>
         <TextBox x:Name="tbx_model" Grid.Row="2" Grid.Column="1"  Width="150" Height="23" Margin="24,10,26,7"
                  Text="{Binding Model, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 ToolTip="{Binding ErrorCollection[Model]}"/>
+                 ToolTip="{Binding ErrorCollection[Model]}" Background="AliceBlue" BorderBrush="Black"/>
         <!--<TextBox x:Name="tbx_make" Grid.Row="3" Grid.Column="1"  Width="150" Height="23" Margin="24,10,26,5"/>-->
         <TextBox x:Name="tbx_make" Grid.Row="3" Grid.Column="1"  Width="150" Height="23" Margin="24,10,26,5"
                  Text="{Binding Manufacturer, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 ToolTip="{Binding ErrorCollection[Manufacturer]}"/>
+                 ToolTip="{Binding ErrorCollection[Manufacturer]}"  Background="AliceBlue" BorderBrush="Black"/>
         <TextBox x:Name="tbx_year" Grid.Row="4" Grid.Column="1" Width="150" Height="23" Margin="24,10,26,5"
                  Text="{Binding MakeYear, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 ToolTip="{Binding ErrorCollection[MakeYear]}"/>
+                 ToolTip="{Binding ErrorCollection[MakeYear]}"  Background="AliceBlue" BorderBrush="Black"/>
         <!--<TextBox x:Name="tbx_fuel" Grid.Row="5" Grid.Column="1" Width="150" Height="23" Margin="24,2,26,2"/>-->
         <ComboBox x:Name="cbx_fuelType" Grid.Column="1" HorizontalAlignment="Left" Margin="24,5,0,0" Grid.Row="5" VerticalAlignment="Top" Width="150" Height="23"
                     Text="{Binding FuelChoices, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 ToolTip="{Binding ErrorCollection[FuelChoices]}"/>
+                 ToolTip="{Binding ErrorCollection[FuelChoices]}" Background="AliceBlue" BorderBrush="Black"/>
         <TextBox x:Name="tbx_tank" Grid.Row="6" Grid.Column="1" Width="150" Height="23" Margin="24,9,26,5" Text="{Binding TankCapacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 ToolTip="{Binding ErrorCollection[TankCapacity]}"/>
-        <Button x:Name="btn_Add" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Top" Width="76" Click="AddBtn_Click" Margin="67,29,0,-28">
+                 ToolTip="{Binding ErrorCollection[TankCapacity]}" Background="AliceBlue" BorderBrush="Black"/>
+        <Button x:Name="btn_Add" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Top" Width="76" Click="AddBtn_Click" Margin="67,29,0,-28" Background="Fuchsia" >
             <iconPacks:PackIconEntypo Width="24" Height="24" Kind="AddToList" />
 
         </Button>
-        <Button x:Name="btn_Cancel" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Top" Width="76" Click="btn_Cancel_Click" Margin="174,29,0,-27">
-            <iconPacks:PackIconEntypo Width="24" Height="24" Kind="Home"/>
+        <Button x:Name="btn_Cancel" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Top" Width="76" Click="btn_Cancel_Click" Margin="174,29,0,-27" Background="PaleTurquoise">
+            <iconPacks:PackIconEntypo Width="24" Height="24" Kind="Home"  />
         </Button>
 
 
