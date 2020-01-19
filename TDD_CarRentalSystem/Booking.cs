@@ -10,19 +10,27 @@ using System.Threading.Tasks;
 
 namespace TDD_CarRentalSystem
 {
+  
+
     public enum BookingType
     {
-        PerDay = 0,
-        PerKm = 1
+        [Description("Per Day (D)")]
+        PerDay,
+
+        [Description("Per KM (K)")]
+        PerKM,
+
+      
     }
 
     public class Booking : ObservableObject, IDataErrorInfo
     {
         private int _id;
-        private BookingType _bookingChoice;
         private int _startOdo;
         private DateTime _startDate;
         private DateTime _endDate;
+        private BookingType _bookingChoice;
+       
 
         public string Error { get { return null; } }
         public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
@@ -37,12 +45,7 @@ namespace TDD_CarRentalSystem
             set => OnPropertyChanged(ref _id, value);
         }
 
-        public BookingType BookingChoice
-        {
-            get { return _bookingChoice; }
-            set => OnPropertyChanged(ref _bookingChoice, value);
-        }
-
+      
         public int StartOdo
         {
             get { return _startOdo; }
@@ -61,14 +64,22 @@ namespace TDD_CarRentalSystem
             set => OnPropertyChanged(ref _endDate, value);
         }
 
+        public BookingType BookingChoice
+        { 
+            get { return _bookingChoice; }
+            set => OnPropertyChanged(ref _bookingChoice, value);
+        
+        }
+
+
         //constructor
-        public Booking(int id, BookingType bookingChoice, int startOdo, DateTime startDate, DateTime endDate)
+        public Booking(int id, int startOdo, DateTime startDate, DateTime endDate, BookingType bookingChoice)
         {
             Id = id;
-            BookingChoice = bookingChoice;
             StartOdo = startOdo;
             StartDate = startDate;
             EndDate = endDate;
+            BookingChoice = bookingChoice;
         }
 
         public string this [string name]
@@ -83,10 +94,6 @@ namespace TDD_CarRentalSystem
                             result = "It cannot be empty";
                         break;
 
-                    case "BookingChoice":
-                        if(string.IsNullOrEmpty(BookingChoice.ToString()))
-                            result = "It cannot be empty";
-                        break;
 
                     case "StartOdo":
                         if(string.IsNullOrEmpty(StartOdo.ToString()))
@@ -143,7 +150,7 @@ namespace TDD_CarRentalSystem
         //Write booking list to file, check if file exists, if not create one
         public static void SaveBooking(List<Booking> bookingList)
         {
-            using (StreamWriter file = File.CreateText(Bookings_FileName))
+            using (StreamWriter file = File.CreateText(getFileNamePath()))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, bookingList);
@@ -167,7 +174,7 @@ namespace TDD_CarRentalSystem
             }
             else
             {
-                bookingList.Add(new Booking(1, BookingType.PerDay, 42000, DateTime.Now, DateTime.Now));
+                bookingList.Add(new Booking(1, 42000, DateTime.Now, DateTime.Now, BookingType.PerDay ));
             }
 
             return bookingList;

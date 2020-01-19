@@ -73,6 +73,7 @@ namespace TDD_CarRentalSystem
         private void MetroWindow_MouseMove(object sender, MouseEventArgs e)
         {
             VehiclesInformationCard.ValueProperty = vehicleList.Count.ToString();
+            BookingInformationCard.ValueProperty = bookingList.Count.ToString();
         }
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -80,6 +81,7 @@ namespace TDD_CarRentalSystem
             if (MessageBox.Show("Do you want to save to external file?", "Save File", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
             {
                 Vehicle.SaveVehicles(vehicleList);
+                
             }
         }
 
@@ -87,6 +89,11 @@ namespace TDD_CarRentalSystem
         {
             Booking_List bookingList = new Booking_List();
             bookingList.ShowDialog();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Booking.SaveBooking(bookingList);
         }
     }
 }

@@ -27,6 +27,7 @@ namespace TDD_CarRentalSystem
             InitializeComponent();
             bookingList = MainWindow.bookingList;
             UpdateList();
+            txtFileNameLabel.Text = Booking.getFileNamePath();
         }
 
         private void UpdateList (int index = 0)
@@ -70,6 +71,12 @@ namespace TDD_CarRentalSystem
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            Button button = sender as Button;
+            Booking booking = button.DataContext as Booking;
+            int index = lvBookingList.Items.IndexOf(booking);
+            Booking_DataEntry win = new Booking_DataEntry(booking, false);
+            win.ShowDialog();
+            UpdateList(index);
 
         }
 
@@ -81,6 +88,15 @@ namespace TDD_CarRentalSystem
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
         {
 
+        }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(MessageBox.Show("Do you want to save booking list to external file?", "Save File", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                Booking.SaveBooking(bookingList);
+            }
+            
         }
     }
 }

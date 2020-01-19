@@ -7,7 +7,7 @@
                        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:TDD_CarRentalSystem"
         mc:Ignorable="d"
-        Title="Booking_List" Height="450" Width="800" KeyUp="MetroWindow_KeyUp">
+        Title="Booking_List" Height="450" Width="800" KeyUp="MetroWindow_KeyUp" Closing="MetroWindow_Closing">
     <Grid>
         <DockPanel>
             <StatusBar DockPanel.Dock="Bottom">
@@ -141,8 +141,8 @@
 
                             <GridViewColumn 
                             Width="100" 
-                            DisplayMemberBinding="{Binding BookingType}">
-                                <GridViewColumnHeader Tag="BookingType" Click="GridViewColumnHeader_Click">Booking Type</GridViewColumnHeader>
+                            DisplayMemberBinding="{Binding BookingChoice}">
+                                <GridViewColumnHeader Tag="BookingChoice" Click="GridViewColumnHeader_Click">Booking Type</GridViewColumnHeader>
                             </GridViewColumn>
 
 

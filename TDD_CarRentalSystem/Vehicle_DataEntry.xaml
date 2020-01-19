@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        
         Title="Vehicle_DataEntry" Height="450" Width="800">
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
@@ -42,6 +43,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="1">Registration:</Label>
         <Label Grid.Row="2">Model:</Label>
@@ -49,6 +51,7 @@
         <Label Grid.Row="4">Make Year:</Label>
         <Label Grid.Row="5">Fuel Type:</Label>
         <Label Grid.Row="6">Tank Capacity:</Label>
+        
 
         <TextBox x:Name="tbx_rego" Grid.Row="1" Grid.Column="1" Width="150" Height="23" Margin="24,9,26,5"
                  Text="{Binding RegistrationNumber, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
@@ -70,6 +73,7 @@
                  ToolTip="{Binding ErrorCollection[FuelChoices]}" Background="AliceBlue" BorderBrush="Black"/>
         <TextBox x:Name="tbx_tank" Grid.Row="6" Grid.Column="1" Width="150" Height="23" Margin="24,9,26,5" Text="{Binding TankCapacity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                  ToolTip="{Binding ErrorCollection[TankCapacity]}" Background="AliceBlue" BorderBrush="Black"/>
+       
         <Button x:Name="btn_Add" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Top" Width="76" Click="AddBtn_Click" Margin="67,29,0,-28" Background="Fuchsia" >
             <iconPacks:PackIconEntypo Width="24" Height="24" Kind="AddToList" />
 

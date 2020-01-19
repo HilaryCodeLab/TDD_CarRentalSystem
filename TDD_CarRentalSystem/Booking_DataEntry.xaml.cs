@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
+using DocumentFormat.OpenXml.Drawing;
 using MahApps.Metro.Controls;
 
 namespace TDD_CarRentalSystem
@@ -14,10 +16,10 @@ namespace TDD_CarRentalSystem
         bool isEmpty = false;
         Booking aBooking;
 
+
         public Booking_DataEntry()
         {
             InitializeComponent();
-            AddBookingTypes();
         }
 
         public Booking_DataEntry(Booking bookingParameter, bool readOnly)
@@ -27,7 +29,7 @@ namespace TDD_CarRentalSystem
             if(bookingParameter != null)
             {
                 txtCode.Text = bookingParameter.Id.ToString();
-                cmBookingType.SelectedIndex = intParse(bookingParameter.BookingChoice.ToString());
+                cmBookingType.SelectedEnumeration = bookingParameter.BookingChoice.ToString();
                 txtBookingStart.SelectedDate = bookingParameter.StartDate;
                 txtBookingEnd.SelectedDate = bookingParameter.EndDate;
                 txtStartOdo.Text =bookingParameter.StartOdo.ToString();
@@ -57,7 +59,7 @@ namespace TDD_CarRentalSystem
 
         private void ValidateData()
         {
-            if(string.IsNullOrEmpty(txtCode.Text) || string.IsNullOrEmpty(cmBookingType.Text) ||
+            if(string.IsNullOrEmpty(txtCode.Text) ||
                string.IsNullOrEmpty(txtBookingStart.Text) || string.IsNullOrEmpty(txtBookingEnd.Text) ||
                string.IsNullOrEmpty(txtStartOdo.Text))
             {
@@ -66,36 +68,38 @@ namespace TDD_CarRentalSystem
             }
         }
 
-        void AddBookingTypes()
-        {
-            cmBookingType.ItemsSource = Enum.GetValues(typeof(BookingType));
-        }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             txtCode.Text = Booking_List.bookingList.Max(x => x.Id + 1).ToString();
             ValidateData();
-            if(isNewBooking && isEmpty == false)
+            if (isNewBooking && isEmpty == false)
             {
-                MainWindow.bookingList.Add(new Booking(Int32.Parse(txtCode.Text), (BookingType)cmBookingType.SelectedIndex,
-                    Int32.Parse(txtStartOdo.Text.Trim()), (DateTime)txtBookingStart.SelectedDate, (DateTime)txtBookingEnd.SelectedDate));
+                MainWindow.bookingList.Add(new Booking(Int32.Parse(txtCode.Text),
+                    Int32.Parse(txtStartOdo.Text.Trim()), (DateTime)txtBookingStart.SelectedDate, (DateTime)txtBookingEnd.SelectedDate,
+                     (BookingType)Enum.Parse(typeof(BookingType), cmBookingType.SelectedEnumeration.ToString())));
+
             }
             else if (!isNewBooking && isEmpty == false)
             {
                 aBooking = MainWindow.bookingList.Where(x => x.Id == aBooking.Id).FirstOrDefault();
-                aBooking.BookingChoice = (BookingType)cmBookingType.SelectedIndex;
+                aBooking.BookingChoice = (BookingType)cmBookingType.SelectedEnumeration;
                 aBooking.StartOdo = Int32.Parse(txtStartOdo.Text);
                 aBooking.StartDate = (DateTime)txtBookingStart.SelectedDate;
                 aBooking.EndDate = (DateTime)txtBookingEnd.SelectedDate;
+               
             }
 
             Close();
 
         }
 
+
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+
+       
     }
 }
