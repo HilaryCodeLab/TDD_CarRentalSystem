@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 
 namespace TDD_CarRentalSystem
 {
@@ -27,6 +28,8 @@ namespace TDD_CarRentalSystem
         private int _odometerReading;
         private int _tankCapacity;
         private FuelTypes _fuelChoices;
+        private static List<Vehicle> _vehicleList { get { return LoadVehicles(); } }
+        public static List<Vehicle> vehicleList { get { return _vehicleList; } }
 
         public string Error { get { return null; } }
         public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
@@ -208,6 +211,13 @@ namespace TDD_CarRentalSystem
 
         }
 
+        public static void AddVehicle(string manufacturer, string model, int makeYear, string rego, FuelTypes fuel, int tank)//id,make,model,year,rego,fueltype,tank
+        {
+            List<Vehicle> vehicleList = _vehicleList;
+            var id = (vehicleList.Count > 0 ? vehicleList.Last().Id + 1 : 1);
+            //var id = _vehicleList.Max(x => x.Id + 1);
+            vehicleList.Add(new Vehicle(id, manufacturer, model, makeYear, rego, fuel, tank));
+        }
 
         public static void SaveVehicles(List<Vehicle> vehicleList) //convert JSon to string and write string to a file
         {
@@ -267,6 +277,7 @@ namespace TDD_CarRentalSystem
 
         }
 
+      
         //public override string ToString()
         //{
         //    return Enum.GetName(typeof(FuelTypes), FuelChoices);

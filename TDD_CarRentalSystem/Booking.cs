@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace TDD_CarRentalSystem
 {
-  
 
     public enum BookingType
     {

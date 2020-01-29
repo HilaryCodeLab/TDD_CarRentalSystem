@@ -114,15 +114,23 @@ namespace TDD_CarRentalSystem
 
             if (isNewCar && isEmpty == false)
             {
+                Vehicle.AddVehicle( tbx_make.Text.Trim(),
+                                    tbx_model.Text.Trim(),
+                                    Int32.Parse(tbx_year.Text.Trim()),
+                                    tbx_rego.Text.Trim(),
+                                    (FuelTypes)cbx_fuelType.SelectedIndex,
+                                    Int32.Parse(tbx_tank.Text.Trim())
+                                    );
 
-                MainWindow.vehicleList.Add(new Vehicle(CarList.vehicleList.Max(x => x.Id + 1),
-                                                        tbx_make.Text.Trim(),
-                                                        tbx_model.Text.Trim(),
-                                                        Int32.Parse(tbx_year.Text.Trim()),
-                                                        tbx_rego.Text.Trim(),
-                                                        (FuelTypes)cbx_fuelType.SelectedIndex,
-                                                        Int32.Parse(tbx_tank.Text.Trim())
-                                                        ));
+
+                //MainWindow.vehicleList.Add(new Vehicle(CarList.vehicleList.Max(x => x.Id + 1),
+                //                                     tbx_make.Text.Trim(),
+                //                                     tbx_model.Text.Trim(),
+                //                                     Int32.Parse(tbx_year.Text.Trim()),
+                //                                     tbx_rego.Text.Trim(),
+                //                                     (FuelTypes)cbx_fuelType.SelectedIndex,
+                //                                     Int32.Parse(tbx_tank.Text.Trim())
+                //                                     ));
 
             }
             //update vehicle
